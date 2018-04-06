@@ -16,7 +16,7 @@ class UserInfoActivity : BaseActivity() {
     private fun setUpFragment() {
         if (supportFragmentManager.findFragmentById(R.id.user_info_act_framelayout) == null) {
             val fragmentTransaction: FragmentTransaction? = supportFragmentManager.beginTransaction()
-            val fragment = UserInfoFragment.newInstance("0")
+            val fragment = UserInfoFragment.newInstance("1")
             fragmentTransaction?.add(R.id.user_info_act_framelayout, fragment)
             fragmentTransaction?.commit()
         }

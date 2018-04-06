@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.tipchou.googlearchitecturecomponents.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_user_info.*
 
@@ -27,6 +28,7 @@ class UserInfoFragment : BaseFragment() {
         viewModel?.getUser()?.observe(this, Observer {
             user_info_fgm_textview.text = it?.userName
         })
+        user_info_fgm_textview.setOnClickListener { }
     }
 
     override fun resumed() {
