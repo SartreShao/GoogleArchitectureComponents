@@ -1,11 +1,8 @@
 package com.tipchou.googlearchitecturecomponents
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import com.tipchou.googlearchitecturecomponents.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_user_info.*
 
@@ -22,7 +19,7 @@ class UserInfoFragment : BaseFragment() {
 
     override fun created(bundle: Bundle?) {
         val userId = arguments?.getString(UID_KEY)
-        viewModel = ViewModelProviders.of(this).get(UserInfoViewModel().javaClass)
+        viewModel = ViewModelProviders.of(this).get(UserInfoViewModel::class.java)
         userId?.let { viewModel?.init(it) }
 
         viewModel?.getUser()?.observe(this, Observer {

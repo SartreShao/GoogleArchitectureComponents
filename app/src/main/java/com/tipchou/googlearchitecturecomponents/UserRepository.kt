@@ -2,12 +2,16 @@ package com.tipchou.googlearchitecturecomponents
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.avos.avoscloud.*
+import com.avos.avoscloud.AVException
+import com.avos.avoscloud.AVObject
+import com.avos.avoscloud.AVQuery
+import com.avos.avoscloud.FindCallback
 
 /**
  * Created by 邵励治 on 2018/4/6.
  * Perfect Code
  */
+
 class UserRepository {
     fun getUser(userId: String): LiveData<User> {
         val data: MutableLiveData<User> = MutableLiveData()

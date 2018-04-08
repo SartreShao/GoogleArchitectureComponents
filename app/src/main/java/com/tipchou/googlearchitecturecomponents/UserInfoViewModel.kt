@@ -9,14 +9,13 @@ import android.arch.lifecycle.ViewModel
  */
 class UserInfoViewModel : ViewModel() {
     private var user: LiveData<User>? = null
-    private val userRepository = UserRepository()
+    private var userRepository: UserRepository? = UserRepository()
 
     fun init(userId: String) {
-        if (this.user != null) {
-            return
-        }
-        user = userRepository.getUser(userId)
+        if (user != null) return
+        user = userRepository?.getUser(userId)
     }
 
     fun getUser() = user
 }
+
