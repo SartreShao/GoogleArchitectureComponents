@@ -6,13 +6,14 @@ import com.avos.avoscloud.AVException
 import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.AVQuery
 import com.avos.avoscloud.FindCallback
+import javax.inject.Inject
 
 /**
  * Created by 邵励治 on 2018/4/6.
  * Perfect Code
  */
 
-class UserRepository {
+class UserRepository @Inject constructor() {
     fun getUser(userId: String): LiveData<User> {
         val data: MutableLiveData<User> = MutableLiveData()
         val query = AVQuery<AVObject>("Users")
