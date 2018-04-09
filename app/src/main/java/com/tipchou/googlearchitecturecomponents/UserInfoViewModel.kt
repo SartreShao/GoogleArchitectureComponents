@@ -9,13 +9,14 @@ import javax.inject.Inject
  * Perfect Code
  */
 class UserInfoViewModel : ViewModel() {
-    private var user: LiveData<User>? = null
     @Inject
     lateinit var userRepository: UserRepository
 
     init {
         DaggerMagicBox.create().poke(this)
     }
+
+    private var user: LiveData<User>? = null
 
     fun init(userId: String) {
         if (user != null) return

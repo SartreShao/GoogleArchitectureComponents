@@ -7,12 +7,13 @@ import com.avos.avoscloud.AVObject
 import com.avos.avoscloud.AVQuery
 import com.avos.avoscloud.FindCallback
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by 邵励治 on 2018/4/6.
  * Perfect Code
  */
-
+@Singleton
 class UserRepository @Inject constructor() {
     fun getUser(userId: String): LiveData<User> {
         val data: MutableLiveData<User> = MutableLiveData()
