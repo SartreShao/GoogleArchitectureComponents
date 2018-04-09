@@ -11,4 +11,5 @@ import javax.inject.Singleton
 @Component
 interface MagicBox {
     fun poke(userInfoViewModel: UserInfoViewModel)
+    fun poke(userRepository: UserRepository)
 }
