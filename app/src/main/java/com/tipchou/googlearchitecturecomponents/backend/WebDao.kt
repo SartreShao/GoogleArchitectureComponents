@@ -19,25 +19,17 @@ class WebDao @Inject constructor() {
         query.whereEqualTo("user_id", userId)
         query.findInBackground(object : FindCallback<AVObject>() {
             override fun done(list: MutableList<AVObject>?, e: AVException?) {
-                if (e == null) {
-                    val usersTableList = arrayListOf<UsersTable>()
-                    if (list != null) {
-                        for (avObject in list) {
-                            val usersTable = UsersTable(avObject)
-                            usersTableList.add(usersTable)
-                        }
+                val usersTableList = arrayListOf<UsersTable>()
+                if (list != null) {
+                    for (avObject in list) {
+                        val usersTable = UsersTable(avObject)
+                        usersTableList.add(usersTable)
                     }
-                    callback.success(usersTableList)
-                } else {
-                    callback.failure(e)
                 }
+                callback.response(usersTableList, e)
             }
         })
     }
 }
 
 
-interface Callback<in T> {
-    fun success(response: List<T>)
-    fun failure(e: AVException?)
-}

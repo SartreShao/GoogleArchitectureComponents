@@ -25,4 +25,3 @@ class UserInfoViewModel : ViewModel() {
 
     fun getUser() = user
 }
-

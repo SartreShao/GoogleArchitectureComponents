@@ -2,10 +2,8 @@ package com.tipchou.googlearchitecturecomponents
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.avos.avoscloud.AVException
 import com.tipchou.googlearchitecturecomponents.backend.Callback
 import com.tipchou.googlearchitecturecomponents.backend.WebDao
-import com.tipchou.googlearchitecturecomponents.backend.table.UsersTable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,14 +23,15 @@ class UserRepository @Inject constructor() {
 
     fun getUser(userId: String): LiveData<User> {
         val data: MutableLiveData<User> = MutableLiveData()
-        webDao.getUser(userId, object : Callback<UsersTable> {
-            override fun success(response: List<UsersTable>) {
-                if (!response.isEmpty()) {
-                    data.value = response[0].userName?.let { response[0].userId?.let { it1 -> User(it1, it) } }
-                }
-            }
+        webDao.getUser(userId, Callback { list, e ->
+            if (e == null) {
 
-            override fun failure(e: AVException?) {
+            } else {
+                if (list != null) {
+                    if (list.isEmpty()) {
+                        data.value = list[0].userName?.let { list[0].userId?.let { it1 -> User(it1, it) } }
+                    }
+                }
             }
         })
         return data
